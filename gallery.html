@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - CyberSafe Uganda</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+<nav class="navbar">
+<a href="index.html" class="logo">
+<span class="logo-mark">CS</span>
+<span class="logo-text">CyberSafe Uganda</span>
+</a>
+
+<ul class="nav-links">
+<li><a class="active" href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="threats.html">Threats</a></li>
+<li><a href="passwords.html">Passwords</a></li>
+<li><a href="tips.html">Tips</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+<div class="nav-actions">
+<a href="tips.html" class="nav-btn">Stay Protected</a>
+<button class="menu-btn" aria-label="Open Menu">☰</button>
+</div>
+</nav>
+</header>
+
+<section class="page-banner">
+<h1>Cyber Security Gallery</h1>
+<p>Learn visually about online safety, hacking threats & protection</p>
+</section>
+
+<section class="gallery">
+
+<div class="gallery-item" onclick="openLightbox(this)">
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="">
+<div class="caption">Cyber Security Protection</div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(this)">
+<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" alt="">
+<div class="caption">Hacking Defense Systems</div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(this)">
+<img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" alt="">
+<div class="caption">Network Security Monitoring</div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(this)">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="">
+<div class="caption">Data Protection Systems</div>
+</div>
+
+</section>
+
+<section class="video-section">
+<h2>🎥 Learn Cyber Security</h2>
+
+<iframe src="https://youtu.be/X-O1-l0gP5Q?si=TP3xDs5uaGZjwS3h" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/live/lpa8uy4DyMo?si=zZbSGWNxvLDG37n2" allowfullscreen></iframe>
+</section>
+
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<img id="lightboxImg">
+</div>
+
+<footer>
+<p>© 2026 CyberSafe Uganda | Stay Safe Online 🔐</p>
+</footer>
+
+<script src="js/nav_menu.js" defer></script>
+
+</body>
+</html>

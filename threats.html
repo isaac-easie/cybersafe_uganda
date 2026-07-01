@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threats | CyberSafe Uganda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #030712;
+            --bg-2: #071120;
+            --bg-3: #0b1628;
+            --panel: rgba(255, 255, 255, .05);
+            --panel-2: rgba(255, 255, 255, .08);
+            --line: rgba(0, 229, 255, .14);
+            --text: #e8f3ff;
+            --muted: #a9c4e6;
+            --primary: #00e5ff;
+            --primary-2: #4cc9ff;
+            --danger: #ff4d6d;
+            --warning: #ffb703;
+            --shadow: 0 20px 60px rgba(0, 0, 0, .35);
+            --radius: 22px;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(0, 229, 255, .08), transparent 28%),
+                radial-gradient(circle at 85% 12%, rgba(76, 201, 255, .08), transparent 24%),
+                linear-gradient(180deg, var(--bg), var(--bg-2));
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            width: min(1180px, 92%);
+            margin: 16px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            background: rgba(6, 12, 25, .72);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .logo-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--primary), #147dff);
+            color: #04101f;
+            font-weight: 800;
+            box-shadow: 0 0 24px rgba(0, 229, 255, .3);
+        }
+
+        .logo-text {
+            font-size: 1rem;
+            letter-spacing: .3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-links a {
+            padding: 10px 12px;
+            font-size: .95rem;
+            color: #d7e7fb;
+            border-radius: 12px;
+            transition: .3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            padding: 11px 16px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), #157dff);
+            color: #03111f;
+            font-weight: 700;
+            box-shadow: 0 12px 28px rgba(0, 229, 255, .2);
+            transition: .3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: transparent;
+            color: #fff;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
+        main {
+            padding-top: 104px;
+        }
+
+        .page-hero {
+            position: relative;
+            padding: 60px 0 84px;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, .12);
+            filter: blur(120px);
+            top: -60px;
+            left: -100px;
+            animation: orb 10s ease-in-out infinite;
+        }
+
+        .page-hero::after {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: rgba(255, 77, 109, .10);
+            filter: blur(120px);
+            right: -120px;
+            bottom: -100px;
+            animation: orb 12s ease-in-out infinite reverse;
+        }
+
+        .hero-wrap {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeUp 1s ease both;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid var(--line);
+            color: #ccefff;
+            font-size: .9rem;
+            margin-bottom: 16px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.08;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            color: var(--muted);
+            line-height: 1.95;
+            font-size: 1.02rem;
+            max-width: 720px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 24px;
+            border-radius: 16px;
+            font-weight: 700;
+            transition: .35s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #147dff);
+            color: #03111f;
+            box-shadow: 0 16px 34px rgba(0, 229, 255, .22);
+            animation: pulseGlow 2.6s infinite;
+        }
+
+        .btn-outline {
+            border-color: var(--line);
+            background: rgba(255, 255, 255, .03);
+            color: #fff;
+        }
+
+        .hero-panel {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .04));
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 26px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            animation: fadeLeft 1.1s ease both;
+        }
+
+        .hero-panel::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(255, 77, 109, .12);
+            filter: blur(70px);
+            top: -80px;
+            right: -60px;
+        }
+
+        .panel-top {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-one {
+            background: #ff5f56;
+        }
+
+        .dot-two {
+            background: #ffbd2e;
+        }
+
+        .dot-three {
+            background: #27c93f;
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .panel-list {
+            display: grid;
+            gap: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .panel-item {
+            padding: 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .08);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        .panel-item:nth-child(2) {
+            animation-delay: .5s;
+        }
+
+        .panel-item:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .panel-item h4 {
+            font-size: .95rem;
+            margin-bottom: 6px;
+            color: #9cefff;
+        }
+
+        .panel-item p {
+            font-size: .92rem;
+            line-height: 1.7;
+            color: #d8e9ff;
+        }
+
+        section {
+            padding: 84px 0;
+            position: relative;
+        }
+
+        .section-header {
+            width: min(1180px, 92%);
+            margin: 0 auto 28px;
+        }
+
+        .section-header.center {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid var(--line);
+            color: #bdefff;
+            font-size: .88rem;
+            margin-bottom: 14px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.7rem, 3vw, 2.7rem);
+            margin-bottom: 12px;
+            letter-spacing: -.5px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            line-height: 1.9;
+        }
+
+        .threat-grid,
+        .warning-grid,
+        .protection-grid {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            display: grid;
+            gap: 24px;
+        }
+
+        .threat-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .threat-card {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 26px;
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: .4s ease;
+        }
+
+        .threat-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 229, 255, .08), transparent 50%, rgba(255, 77, 109, .08));
+            opacity: 0;
+            transition: .4s ease;
+        }
+
+        .threat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--line);
+        }
+
+        .threat-card:hover::before {
+            opacity: 1;
+        }
+
+        .threat-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 20px;
+            display: grid;
+            place-items: center;
+            font-size: 1.65rem;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, rgba(0, 229, 255, .18), rgba(20, 125, 255, .16));
+            position: relative;
+            z-index: 2;
+        }
+
+        .threat-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .threat-card p {
+            color: var(--muted);
+            line-height: 1.85;
+            font-size: .95rem;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 16px;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: .88rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meta span:first-child {
+            color: #d8ecff;
+        }
+
+        .meta span:last-child {
+            color: #ffb4c2;
+            font-weight: 600;
+        }
+
+        .level {
+            height: 10px;
+            background: rgba(255, 255, 255, .08);
+            border-radius: 999px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .level span {
+            display: block;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #00e5ff, #ff4d6d);
+            width: 0;
+            transition: 1.6s ease;
+        }
+
+        .overview-grid {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 24px;
+        }
+
+        .glass-card {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .glass-card p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .glass-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stats-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 22px;
+            padding: 24px 18px;
+            text-align: center;
+            transition: .35s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--line);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-card p {
+            font-size: .92rem;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .warning-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .warning-card {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 24px;
+            padding: 24px 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: .35s ease;
+        }
+
+        .warning-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--line);
+        }
+
+        .warning-card .warning-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        .warning-card h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .warning-card p {
+            font-size: .92rem;
+            line-height: 1.75;
+            color: var(--muted);
+        }
+
+        .protection-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .protection-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: .35s ease;
+        }
+
+        .protection-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--line);
+        }
+
+        .protection-number {
+            min-width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--primary), #157dff);
+            color: #04101f;
+            box-shadow: 0 10px 24px rgba(0, 229, 255, .2);
+        }
+
+        .protection-card h3 {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .protection-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: .95rem;
+        }
+
+        .cta-wrap {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
+
+        .cta-card {
+            background:
+                radial-gradient(circle at top right, rgba(255, 77, 109, .14), transparent 30%),
+                linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .04));
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 28px;
+            padding: 42px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .cta-card h2 {
+            font-size: clamp(1.8rem, 3vw, 2.7rem);
+            margin: 14px 0 12px;
+        }
+
+        .cta-card p {
+            max-width: 760px;
+            margin: 0 auto;
+            line-height: 1.9;
+            color: var(--muted);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .site-footer {
+            padding: 26px 0 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .01));
+            border-top: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .footer-grid {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr .8fr;
+            gap: 28px;
+            padding: 28px 0 24px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            line-height: 1.9;
+            max-width: 520px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul {
+            display: grid;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #cfe1f7;
+            transition: .3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            padding: 18px 0 24px;
+            text-align: center;
+            color: #9fb7d5;
+            font-size: .95rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeLeft {
+            from {
+                opacity: 0;
+                transform: translateX(40px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 229, 255, .32)
+            }
+
+            70% {
+                box-shadow: 0 0 0 18px rgba(0, 229, 255, 0)
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 229, 255, 0)
+            }
+        }
+
+        @keyframes orb {
+            0% {
+                transform: translateY(0) translateX(0)
+            }
+
+            50% {
+                transform: translateY(-40px) translateX(28px)
+            }
+
+            100% {
+                transform: translateY(0) translateX(0)
+            }
+        }
+
+        @keyframes floatCard {
+            0% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-6px)
+            }
+
+            100% {
+                transform: translateY(0)
+            }
+        }
+
+        @media (max-width:1100px) {
+
+            .hero-wrap,
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .threat-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .warning-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width:860px) {
+            .nav-links {
+                position: absolute;
+                top: 86px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: min(92%, 760px);
+                background: rgba(6, 12, 25, .96);
+                border: 1px solid rgba(255, 255, 255, .08);
+                border-radius: 22px;
+                padding: 18px;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+                animation: fadeUp .35s ease both;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .protection-grid,
+            .threat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width:640px) {
+            main {
+                padding-top: 94px;
+            }
+
+            .navbar {
+                padding: 12px 14px;
+            }
+
+            .logo-text {
+                font-size: .92rem;
+            }
+
+            .logo-mark {
+                width: 38px;
+                height: 38px;
+                border-radius: 12px;
+            }
+
+            .stats-box,
+            .warning-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .protection-card {
+                flex-direction: column;
+            }
+
+            .cta-card {
+                padding: 28px 20px;
+            }
+
+            section {
+                padding: 72px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-mark">CS</span>
+                <span class="logo-text">CyberSafe Uganda</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="threats.html">Threats</a></li>
+                <li><a href="passwords.html">Passwords</a></li>
+                <li><a href="tips.html">Tips</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="tips.html" class="nav-btn">Stay Protected</a>
+                <button class="menu-btn" aria-label="Open Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-hero">
+            <div class="hero-wrap">
+                <div class="hero-content">
+                    <span class="hero-badge">Threat Awareness</span>
+                    <h1>Common Cyber Threats</h1>
+                    <p>
+                        Cyber threats continue to evolve as more people depend on the internet for communication,
+                        education, business, banking, and entertainment. Understanding how these threats work is one of
+                        the most important steps in staying safe online. This page highlights major cyber threats that
+                        affect individuals, organisations, and digital systems, while explaining how they operate and
+                        why users should take them seriously.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#threats-list" class="btn btn-primary">Explore Threats</a>
+                        <a href="tips.html" class="btn btn-outline">Safety Tips</a>
+                    </div>
+                </div>
+
+                <div class="hero-panel">
+                    <div class="panel-top">
+                        <span class="dot dot-one"></span>
+                        <span class="dot dot-two"></span>
+                        <span class="dot dot-three"></span>
+                    </div>
+                    <h3 class="panel-title">Threat Snapshot</h3>
+                    <div class="panel-list">
+                        <div class="panel-item">
+                            <h4>Most Common Entry Point</h4>
+                            <p>Fake messages, suspicious links, unsafe downloads, and weak account security often give
+                                attackers easy access to victims.</p>
+                        </div>
+                        <div class="panel-item">
+                            <h4>Main Target</h4>
+                            <p>Passwords, personal data, financial information, social accounts, and confidential files
+                                are among the most targeted assets.</p>
+                        </div>
+                        <div class="panel-item">
+                            <h4>Best Defence</h4>
+                            <p>Awareness, careful browsing, strong passwords, updated software, and caution with emails
+                                and links can reduce exposure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <span class="section-tag">Threat Overview</span>
+                <h2>Why cyber threats matter</h2>
+                <p>
+                    Cyber threats are harmful activities, attacks, or techniques used to steal information, damage
+                    systems, interrupt services, spy on users, or manipulate victims into revealing sensitive
+                    information. These threats can target computers, phones, websites, social media accounts, business
+                    systems, and even cloud services. In many cases, the attacker does not need advanced access if the
+                    victim is tricked into clicking a malicious link, installing unsafe software, or sharing personal
+                    details.
+                </p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="glass-card reveal">
+                    <p>
+                        Some cyber threats are highly technical, while others rely mostly on human error and deception.
+                        For example, phishing attacks often appear as normal emails or messages from trusted people or
+                        organisations, yet they are designed to trick the victim into giving away passwords, bank
+                        details, or one-time verification codes. Malware may arrive through infected downloads or unsafe
+                        websites, silently harming the device or stealing information in the background.
+                    </p>
+                    <p>
+                        By learning how cyber threats work, users can identify suspicious behaviour early, avoid risky
+                        actions, and protect themselves before damage occurs. Threat awareness is therefore a major part
+                        of cybersecurity and digital responsibility.
+                    </p>
+                </div>
+
+                <div class="stats-box reveal">
+                    <div class="stat-card">
+                        <h3 class="counter" data-target="5">0</h3>
+                        <p>Major cyber threats explained on this page</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="counter" data-target="24">0</h3>
+                        <p>Hours a day attackers can target users online</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="counter" data-target="100">0</h3>
+                        <p>% need for awareness before clicking links or downloading files</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="counter" data-target="1">0</h3>
+                        <p>Wrong click sometimes needed to trigger an attack</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="threats-list">
+            <div class="section-header center">
+                <span class="section-tag">Major Threats</span>
+                <h2>Common cyber threats every user should know</h2>
+                <p>
+                    Below are some of the most common cyber threats faced by internet users. Each threat affects users
+                    in a different way, but all of them can cause serious damage if ignored.
+                </p>
+            </div>
+
+            <div class="threat-grid">
+
+                <div class="threat-card reveal">
+                    <div class="threat-icon">🎣</div>
+                    <h3>Phishing</h3>
+                    <p>
+                        Phishing is a cyberattack in which criminals send fake emails, text messages, social media
+                        messages, or website links that look genuine. The aim is to trick users into revealing
+                        passwords, banking details, personal information, or login credentials. Phishing messages often
+                        create urgency by claiming that an account will be locked, a payment has failed, or a prize has
+                        been won.
+                    </p>
+                    <div class="meta">
+                        <span>Threat Level</span>
+                        <span>High Risk</span>
+                    </div>
+                    <div class="level"><span data-width="92%"></span></div>
+                </div>
+
+                <div class="threat-card reveal">
+                    <div class="threat-icon">🦠</div>
+                    <h3>Malware</h3>
+                    <p>
+                        Malware refers to malicious software created to damage systems, spy on users, steal information,
+                        or disrupt normal device operations. It includes viruses, worms, trojans, spyware, and
+                        keyloggers. Malware may enter a device through unsafe downloads, infected USB drives, cracked
+                        software, fake applications, or malicious websites.
+                    </p>
+                    <div class="meta">
+                        <span>Threat Level</span>
+                        <span>High Risk</span>
+                    </div>
+                    <div class="level"><span data-width="88%"></span></div>
+                </div>
+
+                <div class="threat-card reveal">
+                    <div class="threat-icon">🔐</div>
+                    <h3>Ransomware</h3>
+                    <p>
+                        Ransomware is a type of malware that locks, encrypts, or blocks access to files and systems,
+                        then demands payment in exchange for restoration. Victims may lose access to important
+                        documents, photos, records, or business data. Even after payment, there is no guarantee that
+                        attackers will restore the files.
+                    </p>
+                    <div class="meta">
+                        <span>Threat Level</span>
+                        <span>Critical</span>
+                    </div>
+                    <div class="level"><span data-width="95%"></span></div>
+                </div>
+
+                <div class="threat-card reveal">
+                    <div class="threat-icon">🪪</div>
+                    <h3>Identity Theft</h3>
+                    <p>
+                        Identity theft happens when an attacker steals personal information such as names, phone
+                        numbers, passwords, bank details, national identification information, or account credentials
+                        and uses it to impersonate the victim. This can lead to fraud, account takeover, financial loss,
+                        or damage to a person’s reputation.
+                    </p>
+                    <div class="meta">
+                        <span>Threat Level</span>
+                        <span>High Risk</span>
+                    </div>
+                    <div class="level"><span data-width="84%"></span></div>
+                </div>
+
+                <div class="threat-card reveal">
+                    <div class="threat-icon">🧠</div>
+                    <h3>Social Engineering</h3>
+                    <p>
+                        Social engineering is the manipulation of people into giving away confidential information or
+                        performing actions that benefit an attacker. Instead of attacking systems directly, the attacker
+                        exploits trust, fear, curiosity, urgency, or human emotion. It may happen through phone calls,
+                        messages, fake support requests, or impersonation.
+                    </p>
+                    <div class="meta">
+                        <span>Threat Level</span>
+                        <span>High Risk</span>
+                    </div>
+                    <div class="level"><span data-width="86%"></span></div>
+                </div>
+
+                <div class="threat-card reveal">
+                    <div class="threat-icon">🌐</div>
+                    <h3>Unsafe Public Wi-Fi</h3>
+                    <p>
+                        Public Wi-Fi can be risky when used without caution. Attackers may intercept traffic, create
+                        fake hotspots, or exploit insecure connections to capture usernames, passwords, and browsing
+                        activity. Users who access sensitive accounts on unsecured networks may expose their information
+                        to eavesdropping or session hijacking.
+                    </p>
+                    <div class="meta">
+                        <span>Threat Level</span>
+                        <span>Moderate to High</span>
+                    </div>
+                    <div class="level"><span data-width="78%"></span></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header center">
+                <span class="section-tag">Warning Signs</span>
+                <h2>How to recognise suspicious activity</h2>
+                <p>
+                    Many cyber threats leave warning signs before damage happens. Recognising those signs early can help
+                    users avoid becoming victims.
+                </p>
+            </div>
+
+            <div class="warning-grid">
+                <div class="warning-card reveal">
+                    <div class="warning-icon">📩</div>
+                    <h3>Unexpected Messages</h3>
+                    <p>Emails or texts asking for urgent action, login details, payments, or confidential information.
+                    </p>
+                </div>
+
+                <div class="warning-card reveal">
+                    <div class="warning-icon">🔗</div>
+                    <h3>Suspicious Links</h3>
+                    <p>Links that look unusual, shortened links, or websites with strange names and poor security
+                        indicators.</p>
+                </div>
+
+                <div class="warning-card reveal">
+                    <div class="warning-icon">⚠️</div>
+                    <h3>Strange Device Behaviour</h3>
+                    <p>Slow performance, random pop-ups, unknown apps, overheating, or unusual background activity.</p>
+                </div>
+
+                <div class="warning-card reveal">
+                    <div class="warning-icon">🔓</div>
+                    <h3>Unexpected Login Alerts</h3>
+                    <p>Notifications showing account sign-ins from unknown devices, unfamiliar locations, or
+                        unrecognised sessions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <span class="section-tag">Protection</span>
+                <h2>How users can reduce exposure to threats</h2>
+                <p>
+                    Although cyber threats are common, many of them can be reduced through awareness, careful behaviour,
+                    and good security practices.
+                </p>
+            </div>
+
+            <div class="protection-grid">
+                <div class="protection-card reveal">
+                    <div class="protection-number">01</div>
+                    <div>
+                        <h3>Think before clicking</h3>
+                        <p>Always inspect links, attachments, and messages before opening them. If a message looks
+                            suspicious, urgent, or too good to be true, verify it first.</p>
+                    </div>
+                </div>
+
+                <div class="protection-card reveal">
+                    <div class="protection-number">02</div>
+                    <div>
+                        <h3>Use strong passwords and account protection</h3>
+                        <p>Create strong unique passwords for different accounts and avoid sharing them. Enable extra
+                            security features where possible.</p>
+                    </div>
+                </div>
+
+                <div class="protection-card reveal">
+                    <div class="protection-number">03</div>
+                    <div>
+                        <h3>Keep devices and software updated</h3>
+                        <p>Install updates for operating systems, browsers, and apps to fix vulnerabilities that
+                            attackers may exploit.</p>
+                    </div>
+                </div>
+
+                <div class="protection-card reveal">
+                    <div class="protection-number">04</div>
+                    <div>
+                        <h3>Avoid unsafe downloads and websites</h3>
+                        <p>Only download files or applications from trusted sources. Avoid cracked software, unknown
+                            pop-ups, and suspicious websites.</p>
+                    </div>
+                </div>
+
+                <div class="protection-card reveal">
+                    <div class="protection-number">05</div>
+                    <div>
+                        <h3>Protect personal information</h3>
+                        <p>Do not overshare sensitive details online. Be careful with what you post, what forms you
+                            fill, and who you trust with personal data.</p>
+                    </div>
+                </div>
+
+                <div class="protection-card reveal">
+                    <div class="protection-number">06</div>
+                    <div>
+                        <h3>Use caution on public networks</h3>
+                        <p>Avoid logging into sensitive accounts over unsecured public Wi-Fi unless proper protection
+                            measures are in place.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="cta-wrap">
+                <div class="cta-card">
+                    <span class="section-tag">Stay Alert</span>
+                    <h2>Threat awareness is your first line of defence</h2>
+                    <p>
+                        Understanding cyber threats makes it easier to avoid risky behaviour, protect your accounts, and
+                        make safer decisions online. Continue to the password and tips pages to learn more practical
+                        ways to strengthen your digital security.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="passwords.html" class="btn btn-primary">Password Safety</a>
+                        <a href="tips.html" class="btn btn-outline">Cyber Safety Tips</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>CyberSafe Uganda</h3>
+                <p>
+                    A cybersecurity awareness website designed to educate users about digital safety, cyber threats,
+                    privacy protection, and responsible online behaviour.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="threats.html">Threats</a></li>
+                    <li><a href="passwords.html">Passwords</a></li>
+                    <li><a href="tips.html">Tips</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Awareness Topics</h4>
+                <ul>
+                    <li><a href="threats.html">Phishing & Malware</a></li>
+                    <li><a href="passwords.html">Password Security</a></li>
+                    <li><a href="tips.html">Online Safety Tips</a></li>
+                    <li><a href="about.html">Project Purpose</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 CyberSafe Uganda. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/nav_menu.js" defer></script>
+</body>
+
+</html>
